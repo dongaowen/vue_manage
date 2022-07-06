@@ -1,26 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <el-button type="primary">主要按钮</el-button>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
+import axios  from 'axios'
 export default {
   name: 'App',
   components: {
+  },
+  mounted() {
+    // axios.get('http://localhost:8080/api1/hello')
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+  #app {
+    height: 100%;
+  }
 </style>
