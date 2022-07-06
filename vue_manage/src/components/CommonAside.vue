@@ -24,7 +24,6 @@
  export default {
     data() {
       return {
-        isCollapse: false,
         menu: [
           {
             path: '/',
@@ -76,6 +75,10 @@
       },
       hasChild()  {
         return this.menu.filter(item => item.children)
+      },
+      isCollapse() {
+        console.log(this)
+        return this.$store.state.isCollapse
       }
     },
     methods: {

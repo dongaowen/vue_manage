@@ -1,7 +1,7 @@
 <template>
   <div class="header" style="height: 100%">
     <div class="l-header">
-      <el-button plain icon="el-icon-menu" size="mini"></el-button>
+      <el-button plain icon="el-icon-menu" size="mini" @click="handleCollapse"></el-button>
       <h3 style="color: #fff; display: inline-block; margin: 0; margin-left: 20px">首页</h3>
     </div>
     <div class="r-header">
@@ -24,6 +24,11 @@ export default {
   data() {
     return {
       userImage: require('../assets/zhizhu.png')
+    }
+  },
+  methods: {
+    handleCollapse() {
+      this.$store.commit('collapseValue')
     }
   }
 }
