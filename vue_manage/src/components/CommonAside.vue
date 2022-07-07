@@ -1,6 +1,7 @@
 <template>
-  <el-menu default-active="1-4-1" background-color="#545c6d" text-color="#fff" active-text-color="#ffd04b" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-    <h3>通用后台管理系统</h3>
+  <div class="sidebar">
+    <el-menu default-active="1-4-1" background-color="#545c6d" text-color="#fff" active-text-color="#ffd04b" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    <h3>{{$store.state.isCollapse ? '后台' : '通用后台管理系统'}}</h3>
     <el-menu-item @click="clickMenu(item)" v-for="(item, index) in noChild" :key="index" :index="item.path">
       <i :class="'el-icon-' + item.icon"></i>
       <span slot="title">{{ item.label }}</span>
@@ -18,6 +19,8 @@
       </el-menu-item-group> 
     </el-submenu>
   </el-menu>
+  </div>
+  
 </template>
 
 <script>
@@ -77,7 +80,6 @@
         return this.menu.filter(item => item.children)
       },
       isCollapse() {
-        console.log(this)
         return this.$store.state.isCollapse
       }
     },
@@ -102,16 +104,32 @@
 </script>
 
 <style lang="less" scoped>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    // min-height: 400px;
-    height: 100vh;
-  }
-  .el-menu-vertical-demo {
+  .sidebar {
+  // width: 256px;
+  // height: 100%;
+  // background-color: #495058;
+  // overflow: auto;
+  // transition: 0.28s;
+  &.collapse {
     height: 100%;
-  }
+    width: 64px;
+    .logo {
+      width: 64px;
+      .logo-name {
+        display: none;
+      }
+    }
+      }}
+  // .el-menu-vertical-demo:not(.el-menu--collapse) {
+  //   width: 200px;
+  //   // min-height: 4000px;
+  //   height: calc(100vh);
+  // }
+  // .el-menu--collapse {
+  //   height: 100vh;
+  // }
   .el-menu {
-    height: 100%;
+    height: 100vh;
     border: none;
     background-color: red;
     h3 {

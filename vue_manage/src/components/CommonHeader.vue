@@ -1,17 +1,17 @@
 <template>
-  <div class="header" style="height: 100%">
+  <div class="header">
     <div class="l-header">
       <el-button plain icon="el-icon-menu" size="mini" @click="handleCollapse"></el-button>
       <h3 style="color: #fff; display: inline-block; margin: 0; margin-left: 20px">首页</h3>
     </div>
     <div class="r-header">
-      <el-dropdown  trigger="click" szie="mini">
-        <span>
-          <img :src="userImage" alt="">
+      <el-dropdown class="dropdown" trigger="click" size="mini">
+        <span >
+          <img class="img" :src="userImage" alt="">
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-itme>个人中心</el-dropdown-itme>
-          <el-dropdown-itme>退出</el-dropdown-itme>
+          <el-dropdown-item>个人中心</el-dropdown-item>
+          <el-dropdown-item>退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -34,10 +34,28 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
   .header {
     line-height: 60px;
-    height: 60px;
+    height: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .r-header {
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 40px;
+
+  }
+  .img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .dropdown {
+    height: 40px;
   }
 </style>

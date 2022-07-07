@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <el-container style="height: 100%">
-      <el-aside width="auto">
+  <div class="container">
+    <el-container>
+      <el-aside width="auto" class="aside">
         <common-aside></common-aside>
       </el-aside>
-      <el-container>
+        <el-container class="right-container" style="height: 100%">
         <el-header class="el-header">
           <common-header></common-header>
         </el-header>
@@ -29,12 +29,21 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .container {
+    height: 100%;
+    .aside {
+      // position: fixed;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+    }
+    .right-container {
+      min-height: 100%;
+    }
+  }
   .el-header {
     background-color: #333;
     margin: 0;
+  }
 
-  }
-  .el-main {
-    // padding: 0;
-  }
 </style>
