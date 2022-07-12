@@ -12,7 +12,7 @@
       <span slot="title">{{ item1.label }}</span>
       </template>
       <el-menu-item-group v-for="item2 in item1.children" :key="item2.path">
-        <el-menu-item :index="item2.path">
+        <el-menu-item @click="clickMenu(item2)" :index="item2.path">
           <i :class="'el-icon-' + item2.icon"></i>
           <span slot="title">{{ item2.label }}</span>
         </el-menu-item>
@@ -46,7 +46,7 @@
             path: '/about',
             name: 'about',
             label: '用户管理',
-            icon: 'about',
+            icon: 'video-play',
             url: 'UserManage/UserManage'
           },
           {
@@ -85,10 +85,8 @@
     },
     methods: {
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
       },
       clickMenu(item) {
         if (item.name != this.$route.name) {
@@ -98,6 +96,7 @@
             }
           )
         }
+        this.$store.commit('selectMenu', item)
       }
     }
   }
