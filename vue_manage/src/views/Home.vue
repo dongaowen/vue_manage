@@ -37,7 +37,7 @@
             </div>
           </el-card>
         </div>
-        <el-card style="height: 280px; margin-top: 20px"></el-card>
+        <el-card id="bingEcharts" style="height: 280px; margin-top: 20px"></el-card>
         <div style="display: flex;">
           <el-card style="height: 260px; flex-grow: 1; margin-top: 20px;margin-right: 20px"></el-card>
           <el-card style="height: 260px; flex-grow: 1; margin-top: 20px"></el-card>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import * as echarts from 'echarts'
 export default {
   name: 'home',
   data() {
@@ -136,6 +137,44 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    let myChart = echarts.init(document.querySelector('#bingEcharts'))
+    let option = {
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [150, 230, 224, 218, 135, 147, 260],
+          type: 'line'
+        }
+      ]
+    };
+    myChart.setOption(option)
+    // getData()
+    //   .then((res) => {
+    //     const { code, data } = res.data
+    //     if (code === 2000) {
+    //       this.tableData = data.tableData
+    //       const order = data.orderData
+    //       const xData = order.date
+    //       const keyArray = Object.keys(order.data[0])
+    //       const series = []
+    //       keyArray.forEach(element => {
+    //         series.push({
+    //           name: 'key',
+    //           data: order.data.map(item => item[key]),
+    //           type: 'line'
+    //         })
+    //       });
+    //     }
+    //   })
+
   }
 }
 </script>
