@@ -75,12 +75,17 @@
     computed: {
       noChild() {
         return this.menu.filter(item => !item.children)
+        // return this.asyncMenu.filter(item => !item.children)
       },
       hasChild()  {
         return this.menu.filter(item => item.children)
+        // return this.asyncMenu.filter(item => !item.children)
       },
       isCollapse() {
         return this.$store.state.isCollapse
+      },
+      asyncMenu() {
+        return this.$store.state.menu
       }
     },
     methods: {

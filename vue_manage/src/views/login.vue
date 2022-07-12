@@ -72,9 +72,21 @@ export default {
   },
   methods: {
     login() {
-      const token = Math.random()
-      this.$store.commit('setToken', token)
-      this.$router.push({name: 'home'})
+      getMenu()
+        .then(({data: res}) => {
+          if (res.code == 20000) {
+            this.$store.commit('clearMenu')
+            this.$store.commit('setMenu', res.menu)
+            this.$store.commit('setToken', res.token)
+            thsi.$store.commit('addMenu', this.$router)
+            this.$router.push({name: 'home'})
+          } else {
+            this.$message.warning(res.message)
+          }
+        })
+      // const token = Math.random()
+      // this.$store.commit('setToken', token)
+      // this.$router.push({name: 'home'})
     }
   }
 }
